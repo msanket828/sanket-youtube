@@ -16,13 +16,13 @@ const VideoContainer = () => {
   };
   return (
     <div className="py-5">
-      <ul className="flex flex-wrap justify-between">
+      <div className="flex flex-wrap justify-between">
         {videoList.length > 0
           ? videoList.map((video) => <VideoCard key={video.id} video={video} />)
           : Array(50)
               .fill(null)
-              .map((i) => <VideoCardShimmer />)}
-      </ul>
+              .map((i, index) => <VideoCardShimmer key={index} />)}
+      </div>
     </div>
   );
 };

@@ -6,28 +6,18 @@ import { toggleMenu } from "../utils/firstYtSlice";
 import { RiCloseFill } from "react-icons/ri";
 
 function Head() {
-  const isSidebarHidden = useSelector(
-    (store) => store.firstSlice.isSidebarHidden
-  );
   const dispatch = useDispatch();
   const handleSidebarMenu = () => {
     dispatch(toggleMenu());
   };
-  const hamburgerIcon = isSidebarHidden ? (
-    <GiHamburgerMenu
-      className="w-8 h-8 mr-5 cursor-pointer"
-      onClick={handleSidebarMenu}
-    />
-  ) : (
-    <RiCloseFill
-      className="w-10 h-10 mr-5 cursor-pointer"
-      onClick={handleSidebarMenu}
-    />
-  );
+
   return (
     <div className="px-10 py-4 bg-white flex items-center shadow-md sticky top-0 z-[100]">
       <div className="flex w-25 items-center mr-20">
-        {hamburgerIcon}
+        <GiHamburgerMenu
+          className="w-8 h-8 mr-5 cursor-pointer"
+          onClick={handleSidebarMenu}
+        />
         <img
           src="./assets/images/youtube.png"
           alt=""

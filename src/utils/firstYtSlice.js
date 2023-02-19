@@ -9,8 +9,11 @@ const firstYtSlice = createSlice({
     toggleMenu: (state) => {
       state.isSidebarHidden = !state.isSidebarHidden;
     },
+    hideSidebar: (state) => {
+      state.isSidebarHidden = true;
+    },
   },
 });
 
-export const { toggleMenu } = firstYtSlice.actions;
+export const { toggleMenu, hideSidebar } = firstYtSlice.actions;
 export default firstYtSlice.reducer;
