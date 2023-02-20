@@ -1,3 +1,4 @@
+/* -------------------- custom stylesheet for tailwind css ------------------- */
 .sidebar-menu li > a {
   @apply flex items-center gap-x-3 hover:bg-gray-200 rounded-md  px-2 py-1 mb-2;
 }

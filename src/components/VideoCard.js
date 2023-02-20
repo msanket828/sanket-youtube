@@ -8,7 +8,6 @@ const VideoCard = (props) => {
     (store) => store.firstSlice.isSidebarHidden
   );
   const { snippet, statistics } = props.video;
-  console.log(props);
   return (
     <Link to={`watch?v=${props.video.id}`}>
       <div
