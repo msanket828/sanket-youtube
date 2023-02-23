@@ -6,17 +6,26 @@ import { toggleMenu } from "../utils/firstYtSlice";
 import { RiCloseFill } from "react-icons/ri";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { BiSearch } from "react-icons/bi";
+import { cacheResults } from "../utils/searchSlice";
 
 function Head() {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const dispatch = useDispatch();
+  const searchCache = useSelector((store) => store.search);
   const handleSidebarMenu = () => {
     dispatch(toggleMenu());
   };
+
   useEffect(() => {
-    const timer = setTimeout(() => getSearchSuggestions(), 200);
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSuggestions(searchCache[searchQuery]);
+      } else {
+        getSearchSuggestions();
+      }
+    }, 200);
     return () => {
       clearTimeout(timer);
     };
@@ -28,6 +37,12 @@ function Head() {
     const data = await fetch(`${YOUTUBE_SEARCH_API + searchQuery}`);
     const searchResult = await data.json();
     setSuggestions(searchResult[1]);
+    //update cache
+    dispatch(
+      cacheResults({
+        [searchQuery]: searchResult[1],
+      })
+    );
   };
 
   return (

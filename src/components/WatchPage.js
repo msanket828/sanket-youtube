@@ -2,15 +2,14 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { hideSidebar } from "../utils/firstYtSlice";
+import CommentsContainer from "./CommentsContainer";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
-  console.log(searchParams.get("v"));
   const isSidebarHidden = useSelector(
     (store) => store.firstSlice.isSidebarHidden
   );
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(hideSidebar());
   }, []);
@@ -25,6 +24,7 @@ const WatchPage = () => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       ></iframe>
+      <CommentsContainer />
     </div>
   );
 };
