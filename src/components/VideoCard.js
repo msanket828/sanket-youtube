@@ -9,14 +9,14 @@ const VideoCard = (props) => {
   );
   const { snippet, statistics } = props.video;
   return (
-    <Link to={`watch?v=${props.video.id}`}>
+    <Link to={`watch?v=${props?.video?.id}`}>
       <div
         className={`${
           isSidebarHidden ? "max-w-[340px] p-1 mb-4" : "max-w-sm p-1 mb-4"
         }`}
       >
         <img
-          src={snippet.thumbnails.high.url}
+          src={snippet?.thumbnails?.high?.url}
           alt="thumbnail"
           className="rounded-2xl"
         />
@@ -28,13 +28,13 @@ const VideoCard = (props) => {
           />
           <div>
             <h2 className="text-base font-bold mb-1">
-              {snippet.localized.title}
+              {snippet?.localized?.title}
             </h2>
             <p className="text-sm font-semibold text-gray-600 mb-1">
-              {snippet.channelTitle}
+              {snippet?.channelTitle}
             </p>
             <p className="text-xs font-semibold text-gray-600">
-              {makeNumberVisible(statistics.viewCount)} Views
+              {makeNumberVisible(statistics?.viewCount)} Views
             </p>
           </div>
         </div>

@@ -4,6 +4,7 @@ const firstYtSlice = createSlice({
   name: "firstSlice",
   initialState: {
     isSidebarHidden: false,
+    selectedGenres: 0,
   },
   reducers: {
     toggleMenu: (state) => {
@@ -12,8 +13,11 @@ const firstYtSlice = createSlice({
     hideSidebar: (state) => {
       state.isSidebarHidden = true;
     },
+    updateVideos: (state, action) => {
+      state.selectedGenres = +action.payload;
+    },
   },
 });
 
-export const { toggleMenu, hideSidebar } = firstYtSlice.actions;
+export const { toggleMenu, hideSidebar, updateVideos } = firstYtSlice.actions;
 export default firstYtSlice.reducer;
